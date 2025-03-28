@@ -1,6 +1,9 @@
 import streamlit as st
 from converters import image, pdf
 
+# MUST BE FIRST:
+st.set_page_config(page_title="Universal File Converter", layout="wide")
+
 # Set defaults in session state
 if "theme" not in st.session_state:
     st.session_state.theme = "light"
@@ -58,8 +61,7 @@ lang = st.sidebar.selectbox("🌐 Interface Language", ["en", "de", "pl", "uk", 
                             index=["en", "de", "pl", "uk", "fr", "es"].index(st.session_state.lang))
 st.session_state.lang = lang
 
-# Set page and tabs
-st.set_page_config(page_title="Universal File Converter", layout="wide")
+# UI
 st.markdown(f"# 🌐 Universal File Converter ({st.session_state.theme.title()} Theme)")
 
 tab1, tab2 = st.tabs(["🖼️ Image", "📄 PDF"])
