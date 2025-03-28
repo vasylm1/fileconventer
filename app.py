@@ -1,4 +1,3 @@
-
 import streamlit as st
 from converters import image, pdf
 
@@ -11,7 +10,7 @@ if "lang" not in st.session_state:
 def toggle_theme():
     st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
 
-# Apply theme styles
+# Define theme colors
 if st.session_state.theme == "dark":
     background = "#0f172a"
     text_color = "#f1f5f9"
@@ -21,39 +20,42 @@ else:
     text_color = "#000000"
     button_color = "#3b82f6"
 
-st.markdown(f"""
+# Apply CSS via f-string
+style = f"""
     <style>
-        body {
+        body {{
             background-color: {background};
             color: {text_color};
-        }
-        .stButton>button {
+        }}
+        .stButton>button {{
             background-color: {button_color};
             color: white;
-        }
-        .stFileUploader, .stSelectbox {
+        }}
+        .stFileUploader, .stSelectbox {{
             background-color: {background};
             color: {text_color};
-        }
-        .footer {
+        }}
+        .footer {{
             margin-top: 4rem;
             text-align: center;
             font-size: 0.9rem;
             color: {text_color};
-        }
-        .footer a {
+        }}
+        .footer a {{
             color: {button_color};
             text-decoration: none;
-        }
-        .footer a:hover {
+        }}
+        .footer a:hover {{
             text-decoration: underline;
-        }
+        }}
     </style>
-""", unsafe_allow_html=True)
+"""
+st.markdown(style, unsafe_allow_html=True)
 
-# Sidebar options
+# Sidebar controls
 st.sidebar.button("🌙 Dark Mode" if st.session_state.theme == "light" else "☀️ Light Mode", on_click=toggle_theme)
-lang = st.sidebar.selectbox("🌐 Interface Language", ["en", "de", "pl", "uk", "fr", "es"], index=["en", "de", "pl", "uk", "fr", "es"].index(st.session_state.lang))
+lang = st.sidebar.selectbox("🌐 Interface Language", ["en", "de", "pl", "uk", "fr", "es"],
+                            index=["en", "de", "pl", "uk", "fr", "es"].index(st.session_state.lang))
 st.session_state.lang = lang
 
 # Set page and tabs
@@ -67,4 +69,10 @@ with tab2:
     pdf.render()
 
 # Footer
-st.markdown('\n<div class="footer">\n    <p>Created by <strong>Vasyl Madei</strong></p>\n    <p><a href="https://www.linkedin.com/in/vasyl-madei-399488247/" target="_blank">Vasyl Madei on LinkedIn</a></p>\n</div>\n', unsafe_allow_html=True)
+footer = '''
+<div class="footer">
+    <p>Created by <strong>Vasyl Madei</strong></p>
+    <p><a href="https://www.linkedin.com/in/vasyl-madei-399488247/" target="_blank">Vasyl Madei on LinkedIn</a></p>
+</div>
+'''
+st.markdown(footer, unsafe_allow_html=True)
