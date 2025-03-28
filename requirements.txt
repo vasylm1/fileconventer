@@ -1,0 +1,8 @@
+
+streamlit
+Pillow
+PyMuPDF
+pandas
+python-docx
+gtts
+python-pptx
