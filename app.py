@@ -83,11 +83,6 @@ style = """
 """
 st.markdown(style, unsafe_allow_html=True)
 
-# Language selector in sidebar
-lang = st.sidebar.selectbox("🌐 Interface Language", 
-                           ["en", "de", "pl", "uk", "fr", "es"],
-                           index=0)
-
 # Main content
 st.markdown('<div class="main">', unsafe_allow_html=True)
 st.markdown('<div class="title">🔄 Universal File Converter</div>', unsafe_allow_html=True)
@@ -101,11 +96,10 @@ with tab2:
 # Footer
 footer = '''
 <div class="footer">
-    <p>Created with ❤️ by <strong>Vasyl Madei</strong></p>
+    <p>Created by <strong>Vasyl Madei</strong></p>
     <p>
         <a href="https://www.linkedin.com/in/vasyl-madei-399488247/" 
-        target="_blank">Connect on LinkedIn</a> •
-        <a href="https://github.com/yourprofile" target="_blank">View Source Code</a>
+        target="_blank">Connect on LinkedIn</a>
     </p>
 </div>
 </div>  <!-- Close main div -->
